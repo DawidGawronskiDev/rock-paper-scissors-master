@@ -1,0 +1,308 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+
+:root {
+  /* COLORS */
+
+  /* PRIMARY */
+
+  /* Scissors Gradient */
+  --sg1: hsl(39, 89%, 49%);
+  /* Paper Gradient */
+  --pg1: hsl(230, 89%, 62%);
+  /* Rock Gradient */
+  --rg1: hsl(349, 71%, 52%);
+  /* Lizard Gradient */
+  --lg1: hsl(261, 73%, 60%);
+  /* Cyan */
+  --cg1: hsl(189, 59%, 53%);
+
+  /* ### Neutral */
+
+  /* Dark Text */
+  --ndt: hsl(229, 25%, 31%);
+  /* Score Text */
+  --nst: hsl(229, 64%, 46%);
+  /* Header Outline */
+  --nho: hsl(217, 16%, 45%);
+
+  /* BACKGROUND */
+  --bg1: hsl(214, 47%, 23%);
+  --bg2: hsl(237, 49%, 15%);
+
+  --w: #fff;
+
+  /* FONT */
+  --fs: "Barlow Semi Condensed", sans-serif;
+  font-family: var(--fs);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+
+  background: radial-gradient(
+    134.34% 134.34% at 50% 0%,
+    var(--bg1) 0%,
+    var(--bg2) 100%
+  );
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  color: var(--w);
+}
+
+/* HEADER */
+
+.header {
+  position: fixed;
+  top: 32px;
+  height: min(96px, 150px);
+  width: min(90vw, 700px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 15px;
+  outline: 1px solid var(--nho);
+
+  padding: 24px 32px;
+}
+
+.header-heading-container,
+.score-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-container {
+  text-align: center;
+  background-color: var(--w);
+  width: min(74px, 114px);
+  height: calc(100% + 24px);
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-text {
+  color: var(--nst);
+  font-size: 10px;
+}
+
+.score {
+  color: var(--ndt);
+  font-size: 40px;
+}
+
+/* STEP ONE */
+
+.player-choice-container {
+  width: 100%;
+  width: min(90vw, 476px);
+  height: min(100vh, 463px);
+
+  /* display: none !important; */
+}
+
+.player-choice-container ul {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  background-image: url(./images/bg-pentagon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.player-choice-container li {
+  --li-width: 112px;
+  width: var(--li-width);
+  aspect-ratio: 1 / 1;
+
+  display: grid;
+  place-content: center;
+
+  background-color: var(--w);
+  border-radius: 50%;
+  cursor: pointer;
+
+  position: absolute;
+}
+
+.spock {
+  color: var(--cg1);
+  left: 24px;
+  top: calc(55% - var(--li-width));
+
+  box-shadow: 0 0 0 24px currentColor;
+}
+
+.lizard {
+  color: var(--lg1);
+  left: calc(40% - var(--li-width));
+  top: calc(100% - var(--li-width) - 24px);
+  box-shadow: 0 0 0 24px currentColor;
+}
+
+.rock {
+  color: var(--rg1);
+  left: calc(85% - var(--li-width));
+  top: calc(100% - var(--li-width) - 24px);
+  box-shadow: 0 0 0 24px currentColor;
+}
+
+.paper {
+  color: var(--pg1);
+  left: calc(100% - var(--li-width) - 24px);
+  top: calc(55% - var(--li-width));
+  box-shadow: 0 0 0 24px currentColor;
+}
+
+.scissors {
+  color: var(--sg1);
+  left: calc(50% - (var(--li-width) / 2));
+  top: 24px;
+  box-shadow: 0 0 0 24px currentColor;
+}
+
+.player-choice-container li:hover {
+  box-shadow: 0 0 0 24px currentColor, 0 0 0 50px hsla(0, 0%, 100%, 0.05);
+  transition: 0.1s ease-in-out;
+}
+
+/* GAME CONTAINER */
+
+.game-container {
+  width: min(90%, 658px);
+  height: min(90%, 305px);
+
+  margin: 0 auto;
+}
+
+.game-container ul {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template: 1fr / repeat(3, 1fr);
+  gap: 50px;
+}
+
+.game-container li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 64px;
+
+  text-align: center;
+}
+
+.game-container li div {
+  --li-width: 112px;
+  width: 80%;
+  aspect-ratio: 1 / 1;
+
+  display: grid;
+  place-content: center;
+
+  border-radius: 50%;
+
+  background-color: var(--w);
+  cursor: pointer;
+}
+
+.game-container li img {
+  width: 75px;
+}
+
+.game-container span {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 3px;
+}
+
+.game-container .game-result {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: auto;
+  letter-spacing: 0px;
+}
+
+.play-again-button {
+  cursor: pointer;
+  width: 100%;
+  padding: 15px 0;
+
+  border-radius: 8px;
+}
+
+.display-none {
+  display: none;
+}
